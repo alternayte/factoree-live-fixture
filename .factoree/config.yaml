@@ -1,4 +1,4 @@
-# Factoree reads this file through its GitHub App. See docs/quickstart.md in the Factoree repository.
+# Factoree reads this file through its GitHub App.
 version: 1
 identity:
   product: factoree-test
