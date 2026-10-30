@@ -5,8 +5,9 @@ identity:
   linear:
     teamKey: FAC
 # The sprite has no opencode. The bootstrap installs it from npm into a directory on the sprite PATH.
+# npm 12 runs no install script, so the bootstrap runs the postinstall that links the binary.
 bootstrap:
-  command: npm install -g --prefix /home/sprite/.local opencode-ai
+  command: npm install -g --prefix /home/sprite/.local opencode-ai && cd /home/sprite/.local/lib/node_modules/opencode-ai && node postinstall.mjs
 verify:
   commands:
     - name: tree-clean
