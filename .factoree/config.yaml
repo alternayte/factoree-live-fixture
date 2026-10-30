@@ -4,6 +4,9 @@ identity:
   product: factoree-test
   linear:
     teamKey: FAC
+# The sprite has no opencode. The bootstrap installs it from npm into a directory on the sprite PATH.
+bootstrap:
+  command: npm install -g --prefix /home/sprite/.local opencode-ai
 verify:
   commands:
     - name: tree-clean
@@ -12,3 +15,8 @@ agents:
   implementer: opencode
   validator: opencode
   reviewer: opencode
+sandbox:
+  allowedDomains:
+    - registry.npmjs.org
+    - opencode.ai
+    - models.dev
