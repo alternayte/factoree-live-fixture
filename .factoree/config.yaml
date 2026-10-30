@@ -1,0 +1,13 @@
+version: 1
+identity:
+  product: factoree-test
+  linear:
+    teamKey: FAC
+verify:
+  commands:
+    - name: tree-clean
+      run: git diff --check HEAD
+agents:
+  implementer: opencode
+  validator: opencode
+  reviewer: opencode
