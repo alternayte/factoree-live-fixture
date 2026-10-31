@@ -4,10 +4,11 @@ identity:
   product: factoree-test
   linear:
     teamKey: FAC
-# The sprite has no opencode. The bootstrap installs it from npm into a directory on the sprite PATH.
-# npm 12 runs no install script, so the bootstrap runs the postinstall that links the binary.
+# A Fly Sprite has no opencode, so the bootstrap installs it from npm into the user's home, which is
+# on the PATH. npm 12 runs no install script, so the bootstrap runs the postinstall that links the
+# binary. The Factoree sandbox image on Kiln already holds opencode, so the install is skipped there.
 bootstrap:
-  command: npm install -g --prefix /home/sprite/.local opencode-ai && cd /home/sprite/.local/lib/node_modules/opencode-ai && node postinstall.mjs
+  command: 'if ! command -v opencode >/dev/null; then npm install -g --prefix "$HOME/.local" opencode-ai && cd "$HOME/.local/lib/node_modules/opencode-ai" && node postinstall.mjs; fi'
 verify:
   commands:
     - name: tree-clean
@@ -21,3 +22,4 @@ sandbox:
     - registry.npmjs.org
     - opencode.ai
     - models.dev
+    - api.deepseek.com
